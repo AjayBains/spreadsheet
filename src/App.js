@@ -22,7 +22,9 @@ function App() {
   };
 
   const getSum = () => {
-    setSum(highlightedNums.map((x) => x.value).reduce((a, b) => a + b, 0));
+    setSum(
+      highlightedNums.map((x) => Number(x.value)).reduce((a, b) => a + b, 0)
+    );
   };
 
   React.useEffect(() => {
@@ -39,7 +41,7 @@ function App() {
   }, []);
   const handleValue = (e, field) => {
     const nums = [...numbers].map((x) => {
-      if (x.field === field) x.value = Number(e.target.value);
+      if (x.field === field) x.value = e.target.value;
       return x;
     });
     setNumbers(nums);
